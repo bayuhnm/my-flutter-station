@@ -76,6 +76,136 @@ class HomePage extends StatelessWidget {
                         Navigator.pushNamed(context, RouteNames.inputShowcase),
                   ),
                   const SizedBox(height: 14),
+                  _MenuCard(
+                    icon: Icons.smart_button_rounded,
+                    title: 'Button Showcase',
+                    subtitle:
+                        'Primary, secondary, outline, ghost, loading, disabled, success, danger, and icon buttons.',
+                    badge: 'BUTTONS',
+                    onTap: () =>
+                        Navigator.pushNamed(context, RouteNames.buttonShowcase),
+                  ),
+                  const SizedBox(height: 14),
+                  _MenuCard(
+                    icon: Icons.dashboard_customize_rounded,
+                    title: 'Card Showcase',
+                    subtitle:
+                        'Glass cards, gradient cards, stat cards, profile cards, transaction cards, and selectable cards.',
+                    badge: 'CARDS',
+                    onTap: () =>
+                        Navigator.pushNamed(context, RouteNames.cardShowcase),
+                  ),
+                  const SizedBox(height: 14),
+                  _MenuCard(
+                    icon: Icons.web_asset_rounded,
+                    title: 'Dialog Showcase',
+                    subtitle:
+                        'Success, error, warning, info, confirmation, and custom glass dialogs.',
+                    badge: 'DIALOGS',
+                    onTap: () =>
+                        Navigator.pushNamed(context, RouteNames.dialogShowcase),
+                  ),
+                  const SizedBox(height: 14),
+                  _MenuCard(
+                    icon: Icons.vertical_align_bottom_rounded,
+                    title: 'Bottom Sheet Showcase',
+                    subtitle:
+                        'Action sheet, filter sheet, picker sheet, confirmation sheet, and scrollable glass bottom sheet.',
+                    badge: 'SHEETS',
+                    onTap: () => Navigator.pushNamed(
+                      context,
+                      RouteNames.bottomSheetShowcase,
+                    ),
+                  ),
+                  const SizedBox(height: 14),
+                  _MenuCard(
+                    icon: Icons.notifications_active_rounded,
+                    title: 'Feedback Showcase',
+                    subtitle:
+                        'Success toast, error toast, warning snackbar, info alert, banner, and inline feedback.',
+                    badge: 'FEEDBACK',
+                    onTap: () => Navigator.pushNamed(
+                      context,
+                      RouteNames.feedbackShowcase,
+                    ),
+                  ),
+                  const SizedBox(height: 14),
+                  _MenuCard(
+                    icon: Icons.inbox_rounded,
+                    title: 'Empty State Showcase',
+                    subtitle:
+                        'No data, no internet, no search result, no transaction, server error, and retry state.',
+                    badge: 'STATES',
+                    onTap: () => Navigator.pushNamed(
+                      context,
+                      RouteNames.emptyStateShowcase,
+                    ),
+                  ),
+                  const SizedBox(height: 14),
+                  _MenuCard(
+                    icon: Icons.hourglass_top_rounded,
+                    title: 'Loader Showcase',
+                    subtitle:
+                        'Circular loader, linear progress, full page loading, card skeleton, list skeleton, and shimmer state.',
+                    badge: 'LOADERS',
+                    onTap: () =>
+                        Navigator.pushNamed(context, RouteNames.loaderShowcase),
+                  ),
+                  const SizedBox(height: 14),
+                  _MenuCard(
+                    icon: Icons.list_alt_rounded,
+                    title: 'List Item Showcase',
+                    subtitle:
+                        'Basic list tile, avatar item, notification item, transaction item, crypto item, and selectable row.',
+                    badge: 'LIST UI',
+                    onTap: () => Navigator.pushNamed(
+                      context,
+                      RouteNames.listItemShowcase,
+                    ),
+                  ),
+                  const SizedBox(height: 14),
+                  _MenuCard(
+                    icon: Icons.new_releases_rounded,
+                    title: 'Badge & Chip Showcase',
+                    subtitle:
+                        'Status badge, category chip, filter chip, selected chip, gradient badge, and premium tag.',
+                    badge: 'BADGES',
+                    onTap: () =>
+                        Navigator.pushNamed(context, RouteNames.badgeShowcase),
+                  ),
+                  const SizedBox(height: 14),
+                  _MenuCard(
+                    icon: Icons.view_headline_rounded,
+                    title: 'AppBar Showcase',
+                    subtitle:
+                        'Default appbar, transparent appbar, search appbar, action header, title subtitle, and large header.',
+                    badge: 'HEADERS',
+                    onTap: () =>
+                        Navigator.pushNamed(context, RouteNames.appBarShowcase),
+                  ),
+                  const SizedBox(height: 14),
+                  _MenuCard(
+                    icon: Icons.alt_route_rounded,
+                    title: 'Navigation Showcase',
+                    subtitle:
+                        'Bottom navigation, tab bar, segmented control, stepper, page indicator, and navigation patterns.',
+                    badge: 'NAV',
+                    onTap: () => Navigator.pushNamed(
+                      context,
+                      RouteNames.navigationShowcase,
+                    ),
+                  ),
+                  const SizedBox(height: 14),
+                  _MenuCard(
+                    icon: Icons.auto_awesome_mosaic_rounded,
+                    title: 'Layout Showcase',
+                    subtitle:
+                        'Page wrapper, section header, glass background, responsive padding, grid layout, and content block.',
+                    badge: 'LAYOUT',
+                    onTap: () =>
+                        Navigator.pushNamed(context, RouteNames.layoutShowcase),
+                  ),
+                  const SizedBox(height: 14),
                   const _InfoGrid(),
                 ],
               );
