@@ -1,0 +1,2 @@
+import '../../domain/entities/post_entity.dart';
+class PostModel extends PostEntity { const PostModel({required super.userId, required super.id, required super.title, required super.body}); factory PostModel.fromJson(Map<String,dynamic> json)=>PostModel(userId:int.tryParse(json['userId'].toString())??0, id:int.tryParse(json['id'].toString())??0, title:json['title']?.toString()??'', body:json['body']?.toString()??''); }
