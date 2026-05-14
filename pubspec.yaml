@@ -39,6 +39,8 @@ dependencies:
   dio: ^5.9.2
   get_it: ^9.2.1
   shared_preferences: ^2.5.5
+  fl_chart: ^1.2.0
+  qr_flutter: ^4.1.0
 
 dev_dependencies:
   flutter_test:

@@ -16,7 +16,21 @@ import '../../features/components/presentation/layouts/layout_showcase_page.dart
 import '../../features/components/presentation/list_items/list_item_showcase_page.dart';
 import '../../features/components/presentation/loaders/loader_showcase_page.dart';
 import '../../features/components/presentation/navigations/navigation_showcase_page.dart';
+import '../../features/components/presentation/texts/text_showcase_page.dart';
 import '../../features/posts/presentation/pages/post_list_page.dart';
+import '../../features/showcase_components/presentation/pages/showcase_menu_page.dart';
+import '../../features/showcase_components/presentation/pages/chart_showcase_page.dart';
+import '../../features/showcase_components/presentation/pages/media_showcase_page.dart';
+import '../../features/showcase_components/presentation/pages/table_showcase_page.dart';
+import '../../features/showcase_components/presentation/pages/timeline_showcase_page.dart';
+import '../../features/showcase_components/presentation/pages/search_filter_showcase_page.dart';
+import '../../features/showcase_components/presentation/pages/profile_showcase_page.dart';
+import '../../features/showcase_components/presentation/pages/onboarding_showcase_page.dart';
+import '../../features/showcase_components/presentation/pages/auth_showcase_page.dart';
+import '../../features/showcase_components/presentation/pages/notification_showcase_page.dart';
+import '../../features/showcase_components/presentation/pages/wallet_showcase_page.dart';
+import '../../features/showcase_components/presentation/pages/security_showcase_page.dart';
+import '../../features/showcase_components/presentation/pages/utility_showcase_page.dart';
 import 'route_names.dart';
 
 class AppRouter {
@@ -32,6 +46,10 @@ class AppRouter {
         return _buildRoute(const HomePage(), settings);
       case RouteNames.posts:
         return _buildRoute(const PostListPage(), settings);
+
+      // Main showcase
+      case RouteNames.textShowcase:
+        return _buildRoute(const TextShowcasePage(), settings);
       case RouteNames.inputShowcase:
         return _buildRoute(const InputShowcasePage(), settings);
       case RouteNames.buttonShowcase:
@@ -58,6 +76,35 @@ class AppRouter {
         return _buildRoute(const NavigationShowcasePage(), settings);
       case RouteNames.layoutShowcase:
         return _buildRoute(const LayoutShowcasePage(), settings);
+
+      // Extra showcase
+      case RouteNames.extraShowcase:
+        return _buildRoute(const ShowcaseMenuPage(), settings);
+      case RouteNames.chartShowcase:
+        return _buildRoute(const ChartShowcasePage(), settings);
+      case RouteNames.mediaShowcase:
+        return _buildRoute(const MediaShowcasePage(), settings);
+      case RouteNames.tableShowcase:
+        return _buildRoute(const TableShowcasePage(), settings);
+      case RouteNames.timelineShowcase:
+        return _buildRoute(const TimelineShowcasePage(), settings);
+      case RouteNames.searchFilterShowcase:
+        return _buildRoute(const SearchFilterShowcasePage(), settings);
+      case RouteNames.profileShowcase:
+        return _buildRoute(const ProfileShowcasePage(), settings);
+      case RouteNames.onboardingShowcase:
+        return _buildRoute(const OnboardingShowcasePage(), settings);
+      case RouteNames.authShowcase:
+        return _buildRoute(const AuthShowcasePage(), settings);
+      case RouteNames.notificationShowcase:
+        return _buildRoute(const NotificationShowcasePage(), settings);
+      case RouteNames.walletShowcase:
+        return _buildRoute(const WalletShowcasePage(), settings);
+      case RouteNames.securityShowcase:
+        return _buildRoute(const SecurityShowcasePage(), settings);
+      case RouteNames.utilityShowcase:
+        return _buildRoute(const UtilityShowcasePage(), settings);
+
       default:
         return _buildRoute(
           Scaffold(
@@ -80,6 +127,7 @@ class AppRouter {
           parent: animation,
           curve: Curves.easeOutCubic,
         );
+
         return FadeTransition(
           opacity: curved,
           child: SlideTransition(

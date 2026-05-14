@@ -67,6 +67,16 @@ class HomePage extends StatelessWidget {
                   ),
                   const SizedBox(height: 14),
                   _MenuCard(
+                    icon: Icons.text_fields_rounded,
+                    title: 'Text Showcase',
+                    subtitle:
+                        'Gradient text, silver text, neon text, rich text, amount text, running text, typing text, and animated counter.',
+                    badge: 'TEXT UI',
+                    onTap: () =>
+                        Navigator.pushNamed(context, RouteNames.textShowcase),
+                  ),
+                  const SizedBox(height: 14),
+                  _MenuCard(
                     icon: Icons.tune_rounded,
                     title: 'Input Showcase',
                     subtitle:
@@ -74,6 +84,49 @@ class HomePage extends StatelessWidget {
                     badge: 'FORM UI',
                     onTap: () =>
                         Navigator.pushNamed(context, RouteNames.inputShowcase),
+                  ),
+                  const SizedBox(height: 14),
+
+                  _MenuCard(
+                    icon: Icons.show_chart_rounded,
+                    title: 'Chart Showcase',
+                    subtitle:
+                        'Line chart, bar chart, donut chart, mini sparkline, and portfolio performance.',
+                    badge: 'CHARTS',
+                    onTap: () =>
+                        Navigator.pushNamed(context, RouteNames.chartShowcase),
+                  ),
+                  const SizedBox(height: 14),
+                  _MenuCard(
+                    icon: Icons.search_rounded,
+                    title: 'Search & Filter Showcase',
+                    subtitle:
+                        'Search bar, filter chips, sort dropdown, date range filter, category filter, and active tags.',
+                    badge: 'FILTER',
+                    onTap: () => Navigator.pushNamed(
+                      context,
+                      RouteNames.searchFilterShowcase,
+                    ),
+                  ),
+                  const SizedBox(height: 14),
+                  _MenuCard(
+                    icon: Icons.lock_rounded,
+                    title: 'Auth Showcase',
+                    subtitle:
+                        'Login, register, forgot password, reset password, OTP input, PIN input, biometric login, and social button.',
+                    badge: 'AUTH',
+                    onTap: () =>
+                        Navigator.pushNamed(context, RouteNames.authShowcase),
+                  ),
+                  const SizedBox(height: 14),
+                  _MenuCard(
+                    icon: Icons.account_balance_wallet_rounded,
+                    title: 'Wallet Showcase',
+                    subtitle:
+                        'Wallet balance, payment method, bank account, crypto address, QR code, fee breakdown, and receipt card.',
+                    badge: 'WALLET',
+                    onTap: () =>
+                        Navigator.pushNamed(context, RouteNames.walletShowcase),
                   ),
                   const SizedBox(height: 14),
                   _MenuCard(
@@ -204,6 +257,16 @@ class HomePage extends StatelessWidget {
                     badge: 'LAYOUT',
                     onTap: () =>
                         Navigator.pushNamed(context, RouteNames.layoutShowcase),
+                  ),
+                  const SizedBox(height: 14),
+                  _MenuCard(
+                    icon: Icons.widgets_rounded,
+                    title: 'Extra Showcase Components',
+                    subtitle:
+                        'Chart, media, table, timeline, search filter, profile, onboarding, auth, notification, wallet, security, and utility components.',
+                    badge: 'EXTRA UI',
+                    onTap: () =>
+                        Navigator.pushNamed(context, RouteNames.extraShowcase),
                   ),
                   const SizedBox(height: 14),
                   const _InfoGrid(),
