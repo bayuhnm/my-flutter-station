@@ -1,18 +1,31 @@
-import '../../../../core/errors/failure.dart';
 import '../../../../core/network/core_api_service.dart';
-import '../models/login_request_model.dart';
-import '../models/login_response_model.dart';
-import '../models/user_model.dart';
+import '../models/auth_user_model.dart';
 
-abstract class AuthRemoteDataSource { Future<LoginResponseModel> login(LoginRequestModel request); Future<UserModel> getProfile(); }
+abstract class AuthRemoteDataSource {
+  Future<AuthUserModel> login({required String email, required String password});
+}
+
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
-  final CoreApiService apiService; AuthRemoteDataSourceImpl({required this.apiService});
-  @override Future<LoginResponseModel> login(LoginRequestModel request) async {
-    final result = await apiService.post('/auth/login', data: request.toJson(), requiredToken: false);
-    return result.when(success: (response) { if (response.data is Map<String,dynamic>) return LoginResponseModel.fromJson(response.data as Map<String,dynamic>); throw const Failure(title: 'Invalid Response', message: 'Login response format is invalid.'); }, failure: (failure) => throw failure);
-  }
-  @override Future<UserModel> getProfile() async {
-    final result = await apiService.get('/auth/profile');
-    return result.when(success: (response) { final body=response.data; if (body is Map<String,dynamic>) { final data = body['data'] is Map<String,dynamic> ? body['data'] as Map<String,dynamic> : body; return UserModel.fromJson(data); } throw const Failure(title: 'Invalid Response', message: 'Profile response format is invalid.'); }, failure: (failure) => throw failure);
+  final CoreApiService apiService;
+
+  const AuthRemoteDataSourceImpl({required this.apiService});
+
+  @override
+  Future<AuthUserModel> login({required String email, required String password}) async {
+    // Demo endpoint supaya template langsung bisa jalan.
+    // Ganti dengan: await apiService.post('/auth/login', data: {...}) ketika backend sudah siap.
+    await apiService.get('/users/1');
+    await Future<void>.delayed(const Duration(milliseconds: 450));
+
+    if (email.trim().isEmpty || password.trim().isEmpty) {
+      throw Exception('Email and password are required.');
+    }
+
+    return AuthUserModel.fromJson({
+      'id': 1,
+      'name': 'Station Trader',
+      'email': email,
+      'token': 'demo-token-my-flutter-station',
+    });
   }
 }

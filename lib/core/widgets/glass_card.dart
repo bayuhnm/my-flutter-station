@@ -5,46 +5,52 @@ import 'package:flutter/material.dart';
 class GlassCard extends StatelessWidget {
   final Widget child;
   final EdgeInsetsGeometry padding;
-  final EdgeInsetsGeometry? margin;
   final double borderRadius;
   final VoidCallback? onTap;
-  final List<Color>? gradientColors;
 
   const GlassCard({
     super.key,
     required this.child,
     this.padding = const EdgeInsets.all(20),
-    this.margin,
     this.borderRadius = 28,
     this.onTap,
-    this.gradientColors,
   });
 
   @override
   Widget build(BuildContext context) {
-    final card = ClipRRect(
-      borderRadius: BorderRadius.circular(borderRadius),
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final radius = BorderRadius.circular(borderRadius);
+
+    return ClipRRect(
+      borderRadius: radius,
       child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 24, sigmaY: 24),
-        child: Container(
-          margin: margin,
-          padding: padding,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(borderRadius),
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: gradientColors ?? [Colors.white.withOpacity(0.18), Colors.white.withOpacity(0.07)],
+        filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+        child: Material(
+          color: Colors.transparent,
+          child: InkWell(
+            borderRadius: radius,
+            onTap: onTap,
+            child: Container(
+              padding: padding,
+              decoration: BoxDecoration(
+                borderRadius: radius,
+                color: isDark ? Colors.white.withValues(alpha: 0.075) : Colors.white.withValues(alpha: 0.72),
+                border: Border.all(
+                  color: Colors.white.withValues(alpha: isDark ? 0.13 : 0.74),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withValues(alpha: isDark ? 0.30 : 0.08),
+                    blurRadius: 34,
+                    offset: const Offset(0, 22),
+                  ),
+                ],
+              ),
+              child: child,
             ),
-            border: Border.all(color: Colors.white.withOpacity(0.18)),
-            boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.22), blurRadius: 34, offset: const Offset(0, 22))],
           ),
-          child: child,
         ),
       ),
     );
-
-    if (onTap == null) return card;
-    return Material(color: Colors.transparent, child: InkWell(borderRadius: BorderRadius.circular(borderRadius), onTap: onTap, child: card));
   }
 }

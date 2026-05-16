@@ -1,97 +1,68 @@
-import 'dart:async';
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../../core/errors/failure.dart';
-import '../../domain/entities/user_entity.dart';
-import '../../domain/usecases/get_profile_usecase.dart';
 import '../../domain/usecases/login_usecase.dart';
-import '../../domain/usecases/logout_usecase.dart';
-import 'auth_status.dart';
-part 'auth_event.dart';
-part 'auth_state.dart';
+import 'auth_event.dart';
+import 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final LoginUseCase loginUseCase;
-  final GetProfileUseCase getProfileUseCase;
-  final LogoutUseCase logoutUseCase;
-  AuthBloc({
-    required this.loginUseCase,
-    required this.getProfileUseCase,
-    required this.logoutUseCase,
-  }) : super(const AuthState()) {
+
+  AuthBloc({required this.loginUseCase}) : super(const AuthState()) {
     on<AuthStarted>(_onStarted);
-    on<AuthLoginSubmitted>(_onLoginSubmitted);
+    on<AuthEmailChanged>(_onEmailChanged);
+    on<AuthPasswordChanged>(_onPasswordChanged);
+    on<AuthPasswordVisibilityToggled>(_onPasswordVisibilityToggled);
+    on<AuthSubmitted>(_onSubmitted);
     on<AuthLogoutRequested>(_onLogoutRequested);
-    on<AuthErrorCleared>(_onErrorCleared);
-  }
-  FutureOr<void> _onStarted(AuthStarted event, Emitter<AuthState> emit) async {
-    emit(state.copyWith(status: AuthStatus.loading, clearError: true));
-    final result = await getProfileUseCase();
-    result.when(
-      success: (user) => emit(
-        state.copyWith(
-          status: AuthStatus.authenticated,
-          user: user,
-          clearError: true,
-        ),
-      ),
-      failure: (_) => emit(
-        state.copyWith(
-          status: AuthStatus.unauthenticated,
-          clearUser: true,
-          clearError: true,
-        ),
-      ),
-    );
+    on<AuthThemeModeChanged>(_onThemeModeChanged);
   }
 
-  FutureOr<void> _onLoginSubmitted(
-    AuthLoginSubmitted event,
-    Emitter<AuthState> emit,
-  ) async {
-    emit(state.copyWith(status: AuthStatus.loading, clearError: true));
-    final result = await loginUseCase(
-      email: event.email.trim(),
-      password: event.password,
-    );
-    result.when(
-      success: (user) => emit(
-        state.copyWith(
-          status: AuthStatus.authenticated,
-          user: user,
-          message: 'Login success',
-          clearError: true,
-        ),
-      ),
-      failure: (failure) => emit(
-        state.copyWith(
-          status: AuthStatus.failure,
-          error: failure,
-          clearUser: true,
-        ),
-      ),
-    );
+  void _onStarted(AuthStarted event, Emitter<AuthState> emit) {
+    emit(state.copyWith(status: AuthStatus.initial, clearError: true));
   }
 
-  FutureOr<void> _onLogoutRequested(
-    AuthLogoutRequested event,
-    Emitter<AuthState> emit,
-  ) async {
-    await logoutUseCase();
-    emit(
-      state.copyWith(
-        status: AuthStatus.unauthenticated,
-        clearUser: true,
-        clearError: true,
-        clearMessage: true,
-      ),
-    );
+  void _onEmailChanged(AuthEmailChanged event, Emitter<AuthState> emit) {
+    emit(state.copyWith(email: event.email, status: AuthStatus.initial, clearError: true));
   }
 
-  FutureOr<void> _onErrorCleared(
-    AuthErrorCleared event,
+  void _onPasswordChanged(AuthPasswordChanged event, Emitter<AuthState> emit) {
+    emit(state.copyWith(password: event.password, status: AuthStatus.initial, clearError: true));
+  }
+
+  void _onPasswordVisibilityToggled(
+    AuthPasswordVisibilityToggled event,
     Emitter<AuthState> emit,
   ) {
-    emit(state.copyWith(clearError: true, clearMessage: true));
+    emit(state.copyWith(obscurePassword: !state.obscurePassword));
+  }
+
+  Future<void> _onSubmitted(AuthSubmitted event, Emitter<AuthState> emit) async {
+    if (!state.canSubmit) {
+      emit(state.copyWith(
+        status: AuthStatus.failure,
+        errorMessage: 'Please enter a valid email and minimum 6 characters password.',
+      ));
+      return;
+    }
+
+    emit(state.copyWith(status: AuthStatus.loading, clearError: true));
+
+    try {
+      final user = await loginUseCase(email: state.email, password: state.password);
+      emit(state.copyWith(status: AuthStatus.authenticated, user: user, clearError: true));
+    } on Failure catch (e) {
+      emit(state.copyWith(status: AuthStatus.failure, errorMessage: e.message));
+    } catch (_) {
+      emit(state.copyWith(status: AuthStatus.failure, errorMessage: 'Unable to login right now.'));
+    }
+  }
+
+  void _onLogoutRequested(AuthLogoutRequested event, Emitter<AuthState> emit) {
+    emit(state.copyWith(status: AuthStatus.initial, password: '', clearUser: true, clearError: true));
+  }
+
+  void _onThemeModeChanged(AuthThemeModeChanged event, Emitter<AuthState> emit) {
+    emit(state.copyWith(themeMode: event.themeMode));
   }
 }
