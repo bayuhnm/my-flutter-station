@@ -12,4 +12,5 @@ class RouteNames {
   static const designSystem = '/design-system';
   static const textAnimatedPreview = '/design-system/text-animated-preview';
   static const buttonAnimatedPreview = '/design-system/button-animated-preview';
+  static const imageCardPreview = '/design-system/image-card-preview';
 }
