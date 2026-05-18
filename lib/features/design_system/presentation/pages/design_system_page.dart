@@ -33,8 +33,8 @@ class DesignSystemPage extends StatelessWidget {
                     const _DesignSystemHeader(),
                     const SizedBox(height: 26),
                     const _DesignSystemHero(),
-                    const SizedBox(height: 20),
-                    const _DesignSystemStats(),
+                    // const SizedBox(height: 20),
+                    // const _DesignSystemStats(),
                     const SizedBox(height: 30),
 
                     _SectionHeader(
@@ -69,31 +69,29 @@ class DesignSystemPage extends StatelessWidget {
                       icon: Icons.smart_button_rounded,
                       badge: 'Next',
                       color: _purple,
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(
+                          context,
+                          RouteNames.buttonAnimatedPreview,
+                        );
+                      },
                     ),
 
                     const SizedBox(height: 14),
 
                     _DesignSystemTile(
-                      title: 'Badges & Chips',
+                      title: 'Image Cards',
                       subtitle:
-                          'Status badge, crypto tag, category chip, filter chip, alert badge and premium labels.',
-                      icon: Icons.sell_rounded,
-                      badge: 'Next',
-                      color: _gold,
-                      onTap: () {},
-                    ),
-
-                    const SizedBox(height: 14),
-
-                    _DesignSystemTile(
-                      title: 'Cards & List Items',
-                      subtitle:
-                          'Market cards, portfolio rows, news cards, transaction items and infinite scroll list.',
-                      icon: Icons.view_agenda_rounded,
-                      badge: 'Next',
+                          'Premium cards with network image, overlay, chips, badges, article and promo styles.',
+                      icon: Icons.photo_library_rounded,
+                      badge: 'Ready',
                       color: _green,
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(
+                          context,
+                          RouteNames.imageCardPreview,
+                        );
+                      },
                     ),
 
                     const SizedBox(height: 14),
@@ -109,8 +107,6 @@ class DesignSystemPage extends StatelessWidget {
                     ),
 
                     const SizedBox(height: 24),
-
-                    const _DesignSystemFooterCard(),
                   ]),
                 ),
               ),
@@ -462,48 +458,6 @@ class _StatCard extends StatelessWidget {
             style: Theme.of(context).textTheme.labelSmall?.copyWith(
               color: designSystemMutedColor(context),
               fontWeight: FontWeight.w700,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _DesignSystemFooterCard extends StatelessWidget {
-  const _DesignSystemFooterCard();
-
-  @override
-  Widget build(BuildContext context) {
-    return DesignSystemGlassPanel(
-      borderRadius: 30,
-      padding: const EdgeInsets.all(20),
-      child: Row(
-        children: [
-          Container(
-            width: 46,
-            height: 46,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(18),
-              color: const Color(0xFF38BDF8).withValues(alpha: 0.12),
-              border: Border.all(
-                color: const Color(0xFF38BDF8).withValues(alpha: 0.28),
-              ),
-            ),
-            child: const Icon(
-              Icons.tips_and_updates_rounded,
-              color: Color(0xFF38BDF8),
-            ),
-          ),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Text(
-              'This page is separated from Auth widgets, so the Design System can grow independently.',
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                height: 1.42,
-                color: designSystemMutedColor(context),
-                fontWeight: FontWeight.w600,
-              ),
             ),
           ),
         ],

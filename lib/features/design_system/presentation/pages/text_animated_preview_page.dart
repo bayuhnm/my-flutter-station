@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:my_flutter_station/features/auth/presentation/widgets/auth_premium_widget.dart';
 
 import '../../../../core/widgets/app_background.dart';
-import '../widgets/animated_text_widgets.dart';
+import '../widgets/text_widgets.dart';
 
 class TextAnimatedPreviewPage extends StatelessWidget {
   const TextAnimatedPreviewPage({super.key});
@@ -274,23 +274,6 @@ class TextAnimatedPreviewPage extends StatelessWidget {
                     ),
 
                     const SizedBox(height: 14),
-                    const _PreviewBlock(
-                      title: 'Shimmer Scan Text',
-                      badge: 'Shimmer',
-                      color: _gold,
-                      child: ShimmerText(
-                        text: 'Premium Station',
-                        style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.w900,
-                          letterSpacing: -0.8,
-                        ),
-                        baseColor: Color(0xFFF8D66D),
-                        highlightColor: Colors.white,
-                      ),
-                    ),
-
-                    const SizedBox(height: 14),
                     _PreviewBlock(
                       title: 'Price Pulse Text',
                       badge: 'Market',
@@ -426,17 +409,18 @@ class TextAnimatedPreviewPage extends StatelessWidget {
 
                     const SizedBox(height: 14),
                     const _PreviewBlock(
-                      title: 'Gradient Pulse Text',
-                      badge: 'Pulse',
+                      title: 'Shimmer Scan Text',
+                      badge: 'Shimmer',
                       color: _gold,
-                      child: GradientPulseText(
-                        text: 'Luxury Motion System',
-                        colors: [_gold, _blue, _purple],
+                      child: ShimmerText(
+                        text: 'Premium Station',
                         style: TextStyle(
-                          fontSize: 28,
+                          fontSize: 30,
                           fontWeight: FontWeight.w900,
                           letterSpacing: -0.8,
                         ),
+                        baseColor: Color(0xFFF8D66D),
+                        highlightColor: Colors.white,
                       ),
                     ),
 
