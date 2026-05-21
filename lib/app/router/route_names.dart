@@ -13,4 +13,5 @@ class RouteNames {
   static const textAnimatedPreview = '/design-system/text-animated-preview';
   static const buttonAnimatedPreview = '/design-system/button-animated-preview';
   static const imageCardPreview = '/design-system/image-card-preview';
+  static const formInputPreview = '/design-system/form-input-preview';
 }

@@ -67,7 +67,7 @@ class DesignSystemPage extends StatelessWidget {
                       subtitle:
                           'Primary, secondary, glass, gradient, icon, loading, disabled and premium action buttons.',
                       icon: Icons.smart_button_rounded,
-                      badge: 'Next',
+                      badge: 'Ready',
                       color: _purple,
                       onTap: () {
                         Navigator.pushNamed(
@@ -101,9 +101,14 @@ class DesignSystemPage extends StatelessWidget {
                       subtitle:
                           'Text field, dropdown, radio, checkbox, date picker, upload and validation states.',
                       icon: Icons.dynamic_form_rounded,
-                      badge: 'Next',
+                      badge: 'Ready',
                       color: _pink,
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(
+                          context,
+                          RouteNames.formInputPreview,
+                        );
+                      },
                     ),
 
                     const SizedBox(height: 24),

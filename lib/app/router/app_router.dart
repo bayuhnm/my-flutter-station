@@ -7,6 +7,7 @@ import '../../features/auth/presentation/pages/auth_minimal_crypto_page.dart';
 import '../../features/auth/presentation/pages/auth_neon_card_page.dart';
 import '../../features/auth/presentation/pages/auth_preview_page.dart';
 import '../../features/design_system/presentation/pages/button_animated_preview_page.dart';
+import '../../features/design_system/presentation/pages/form_input_preview_page.dart';
 import '../../features/design_system/presentation/pages/image_card_preview_page.dart';
 import '../../features/home/presentation/pages/home_page.dart';
 import '../../features/splash/presentation/pages/splash_page.dart';
@@ -38,6 +39,8 @@ class AppRouter {
         return _slide(const ButtonAnimatedPreviewPage(), settings);
       case RouteNames.imageCardPreview:
         return _slide(const ImageCardPreviewPage(), settings);
+      case RouteNames.formInputPreview:
+        return _slide(const FormInputPreviewPage(), settings);
 
       default:
         return _fade(const _RouteNotFoundPage(), settings);
