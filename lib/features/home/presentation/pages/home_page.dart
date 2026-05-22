@@ -67,13 +67,18 @@ class HomePage extends StatelessWidget {
                     ),
                     const SizedBox(height: 14),
                     _LuxuryModuleTile(
-                      title: 'All Form Preview',
+                      title: 'Short Videos Player',
                       subtitle:
-                          'Input, dropdown, radio, upload, validation and states.',
-                      icon: Icons.dynamic_form_rounded,
-                      badge: 'Soon',
+                          'Play short video or reels in unlimited scroll with like and comment.',
+                      icon: Icons.play_circle_fill_rounded,
+                      badge: 'New',
                       glowColor: const Color(0xFF22C55E),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(
+                          context,
+                          RouteNames.shortVideosPreview,
+                        );
+                      },
                     ),
                     const SizedBox(height: 24),
                     const _DesignSystemBanner(),

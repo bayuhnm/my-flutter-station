@@ -14,4 +14,11 @@ class RouteNames {
   static const buttonAnimatedPreview = '/design-system/button-animated-preview';
   static const imageCardPreview = '/design-system/image-card-preview';
   static const formInputPreview = '/design-system/form-input-preview';
+
+  // Short Video Player
+  static const shortVideosPreview = '/short-videos-preview';
+  static const shortVideosPurePlayer = '/short-videos-preview/pure-player';
+  static const shortVideosVisibilityPlayer =
+      '/short-videos-preview/visibility-player';
+  static const shortVideosChewiePlayer = '/short-videos-preview/chewie-player';
 }

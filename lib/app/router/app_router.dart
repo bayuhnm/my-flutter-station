@@ -10,6 +10,10 @@ import '../../features/design_system/presentation/pages/button_animated_preview_
 import '../../features/design_system/presentation/pages/form_input_preview_page.dart';
 import '../../features/design_system/presentation/pages/image_card_preview_page.dart';
 import '../../features/home/presentation/pages/home_page.dart';
+import '../../features/short_video/presentation/pages/short_videos_chewie_player_page.dart';
+import '../../features/short_video/presentation/pages/short_videos_preview_page.dart';
+import '../../features/short_video/presentation/pages/short_videos_pure_player_page.dart';
+import '../../features/short_video/presentation/pages/short_videos_visibility_player_page.dart';
 import '../../features/splash/presentation/pages/splash_page.dart';
 import 'route_names.dart';
 
@@ -41,6 +45,18 @@ class AppRouter {
         return _slide(const ImageCardPreviewPage(), settings);
       case RouteNames.formInputPreview:
         return _slide(const FormInputPreviewPage(), settings);
+
+      case RouteNames.shortVideosPreview:
+        return _slide(const ShortVideosPreviewPage(), settings);
+
+      case RouteNames.shortVideosPurePlayer:
+        return _slide(const ShortVideosPurePlayerPage(), settings);
+
+      case RouteNames.shortVideosVisibilityPlayer:
+        return _slide(const ShortVideosVisibilityPlayerPage(), settings);
+
+      case RouteNames.shortVideosChewiePlayer:
+        return _slide(const ShortVideosChewiePlayerPage(), settings);
 
       default:
         return _fade(const _RouteNotFoundPage(), settings);
